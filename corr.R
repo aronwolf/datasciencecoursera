@@ -1,7 +1,7 @@
 corr <- function(directory, threshold = 0) {
     
     pollutant_data <- data.frame()
-    correlation_ccoefficients <- numeric(0)
+    correlation_coefficients <- numeric(0)
 
     complete_observations <- complete(directory)
     complete_observations_at_threshold <- complete_observations[which(complete_observations$nobs > threshold),]
@@ -20,9 +20,9 @@ corr <- function(directory, threshold = 0) {
         x <- c(clean_observation_set[,2])
         y <- c(clean_observation_set[,3])
         z <- cor(x,y)
-        correlation_ccoefficients <- c(correlation_ccoefficients, z)
-        final_correlation_ccoefficients <- na.omit(correlation_ccoefficients)
+        correlation_coefficients <- c(correlation_coefficients, z)
+##        final_correlation_coefficients <- na.omit(correlation_coefficients)
     }
-    final_correlation_ccoefficients
+    correlation_coefficients
 }
 
