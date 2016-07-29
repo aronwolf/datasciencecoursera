@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green128\blue0;\red128\green128\blue128;\red0\green0\blue255;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")\
+outcome[, 11] <- as.numeric(outcome[, 11])\
+sub.outcome <- subset(outcome, outcome$State == state)\
+minimum <- which(sub.outcome[,11] == min(na.omit(sub.outcome[,11])))\
+return_location <- sub.outcome[minimum,2:11]\
+return_location[1,1]\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \uc0\u8232     
+\f1 linkResolver.addParameter(
+\f2\b \cf2 "issn"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "0018-974X"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "volume"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "59"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "issue"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "23"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "spage"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "28"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "date"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "2006-06-22"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "DD_DBCODE"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "7WY"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "SS_ReferentFormat"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "JournalFormat"
+\f1\b0 \cf0 );\uc0\u8232     linkResolver.addParameter(
+\f2\b \cf2 "SS_RequestType"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "1"
+\f1\b0 \cf0 );\uc0\u8232     
+\f3\i \cf3 //mockAPIQuery();\uc0\u8232     
+\f1\i0 \cf0 String uri = linkResolver.getUri();\uc0\u8232     
+\f3\i assertNotNull
+\f1\i0 (uri, 
+\f2\b \cf2 "The result string should not be null!"
+\f1\b0 \cf0 );\uc0\u8232     
+\f3\i assertTrue
+\f1\i0 (uri.length() > \cf4 0\cf0 , 
+\f2\b \cf2 "The result string length should be greater than zero!"
+\f1\b0 \cf0 );\uc0\u8232     
+\f3\i assertEquals
+\f1\i0 (uri, 
+\f2\b \cf2 "http://www.jstor.org/stable/30098453?pq-origsite=summon"
+\f1\b0 \cf0 , 
+\f2\b \cf2 "Returned"\uc0\u8232             
+\f1\b0 \cf0 + 
+\f2\b \cf2 "link value does not match expected"
+\f1\b0 \cf0 );\uc0\u8232 \}\u8232 http:
+\f3\i \cf3 //cx5ax8dv6v.useaccesscontrol.com/go?url=http://search.proquest.com/docview/217686742?pq-origsite=summon&accountid=13787\
+}
