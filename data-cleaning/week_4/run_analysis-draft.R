@@ -1,6 +1,7 @@
 ## run_analysis <- function () { 
     library(plyr)
     library(reshape)
+    library(reshape2)
     library(dplyr)
     
     #download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "UCI HAR Dataset.zip", method = "curl")
@@ -21,12 +22,9 @@
     #Combines test and train data frames together
     combined_observations <-rbind(observations_test, observations_train)
 
-    ## Note seperator below is changed from default in order to force combine
-    ## variables with numbers to remove duplicate processing issue as noted
-    ## here: http://stackoverflow.com/questions/28549045/dplyr-select-error-found-duplicated-column-name
+    ## Rename variables
     variables <- read.table("UCI\ HAR\ Dataset/features.txt")
     variables_names <- c("Subject", "Activity", as.character(unlist(variables$V2, use.names = FALSE)))
-    #variables_names <- variables_names[ , !duplicated(colnames(variables_names))]
     names(combined_observations) <- variables_names
     
     ## Pulls out the columns we want
@@ -36,4 +34,5 @@
     activities <- read.table("UCI\ HAR\ Dataset/activity_labels.txt")
     mean_sd_observations$Activity <- mapvalues(mean_sd_observations$Activity, from = c(1:length(activities$V2)), to = as.vector(activities$V2))
     
+    #dcast(mean_sd_observations, Subject + Activity ~., mean, value.var = "fBodyBodyGyroJerkMag-std()")
 ## }
