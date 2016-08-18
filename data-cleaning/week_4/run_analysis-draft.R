@@ -34,9 +34,13 @@
     activities <- read.table("UCI\ HAR\ Dataset/activity_labels.txt")
     mean_sd_observations$Activity <- mapvalues(mean_sd_observations$Activity, from = c(1:length(activities$V2)), to = as.vector(activities$V2))
     
-    #names(mean_sd_observations[-c(1,2)])
+    x <- names(mean_sd_observations[-c(1,2)])
+    final_write <- data.frame(as.vector(mean_sd_observations[1]), as.vector(mean_sd_observations[2]))
     
-    #for (x in names(mean_sd_observations[-c(1,2)])) {
-    #    dcast(mean_sd_observations, Subject + Activity ~., mean, value.var = x)
-    #}
+    y <- length(x)
+    for (z in 1:y) {
+        write <- dcast(mean_sd_observations, Subject + Activity ~., mean, value.var = x[z])
+        final_write <- cbind(final_write, write)
+    }
+    final_write
 ## }
