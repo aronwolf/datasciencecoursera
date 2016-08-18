@@ -35,6 +35,8 @@
     mean_sd_observations$Activity <- mapvalues(mean_sd_observations$Activity, from = c(1:length(activities$V2)), to = as.vector(activities$V2))
     
     #names(mean_sd_observations[-c(1,2)])
-    #dcast(mean_sd_observations, Subject + Activity ~., mean, value.var = "fBodyBodyGyroJerkMag-std()")
-    #sapply(y, fun(x))
+    
+    #for (x in names(mean_sd_observations[-c(1,2)])) {
+    #    dcast(mean_sd_observations, Subject + Activity ~., mean, value.var = x)
+    #}
 ## }
