@@ -1,11 +1,11 @@
-#run_analysis <- function () {
+run_analysis <- function () {
     library(plyr)
     library(reshape2)
 
 ## Downlad and unzip file. Overwite if file exists to ensure the
 ## most up to date data possible
-#    download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","UCI HAR Dataset.zip", method = "curl")
-#    unzip("UCI\ HAR\ Dataset.zip", overwrite = TRUE)
+    download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","UCI HAR Dataset.zip", method = "curl")
+    unzip("UCI\ HAR\ Dataset.zip", overwrite = TRUE)
 
 ## Reads data from test dir and collates into combined test data frame
     X_test <- read.table("UCI\ HAR\ Dataset/test/X_test.txt")
@@ -58,4 +58,4 @@
 
 ## Write tidy csv file out
     write.csv(final_write, "UCI_HAR_Dataset-tidy.csv")
-#}
+}
