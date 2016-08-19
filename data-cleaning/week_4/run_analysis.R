@@ -1,11 +1,11 @@
-run_analysis <- function () {
+#run_analysis <- function () {
     library(plyr)
     library(reshape2)
 
 ## Downlad and unzip file. Overwite if file exists to ensure the
 ## most up to date data possible
-    download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","UCI HAR Dataset.zip", method = "curl")
-    unzip("UCI\ HAR\ Dataset.zip", overwrite = TRUE)
+#    download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","UCI HAR Dataset.zip", method = "curl")
+#    unzip("UCI\ HAR\ Dataset.zip", overwrite = TRUE)
 
 ## Reads data from test dir and collates into combined test data frame
     X_test <- read.table("UCI\ HAR\ Dataset/test/X_test.txt")
@@ -52,7 +52,10 @@ run_analysis <- function () {
 ## the initial numeric vector used in the creation of the data frame
     final_write <- final_write[, !duplicated(colnames(final_write))]
     final_write <- final_write[-c(1)]
+    
+## Melt data frame from "wide" to "long" format
+    final_write <- melt(final_write, id = c("Subject", "Activity"))
 
 ## Write tidy csv file out
     write.csv(final_write, "UCI_HAR_Dataset-tidy.csv")
-}
+#}
