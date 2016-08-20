@@ -57,5 +57,5 @@ run_analysis <- function () {
     final_write <- melt(final_write, id = c("Subject", "Activity"))
 
 ## Write tidy csv file out
-    write.csv(final_write, "UCI_HAR_Dataset-tidy.csv")
+    write.table(final_write, "UCI_HAR_Dataset-tidy.txt", row.names = FALSE)
 }
